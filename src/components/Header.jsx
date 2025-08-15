@@ -35,8 +35,8 @@ const Header = ({ setSidebarOpen }) => {
             <div className="flex md:hidden items-center">
               <img 
                 src={Logo} 
-                width={70} 
-                height={40} 
+                width={90} 
+                height={60} 
                 alt="Logo" 
                 className="sm:w-24 sm:h-12"
               />
@@ -64,7 +64,7 @@ const Header = ({ setSidebarOpen }) => {
           </nav>
 
           {/* Right Section */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center  space-x-6">
             {/* Search Button - Mobile */}
             <button 
               onClick={() => setSearchOpen(!searchOpen)}
@@ -97,12 +97,12 @@ const Header = ({ setSidebarOpen }) => {
             </button>
 
             {/* Notifications */}
-            <button className="relative text-white/80 hover:text-orange-400 p-2 rounded-lg hover:bg-orange-500/20 transition-all">
+            {/* <button className="relative text-white/80 hover:text-orange-400 p-2 rounded-lg hover:bg-orange-500/20 transition-all">
               <Bell size={18} />
               <span className="absolute -top-1 -right-1 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
                 3
               </span>
-            </button>
+            </button> */}
 
             {/* Auth Buttons */}
             <div className="flex items-center space-x-1.5">

@@ -34,7 +34,7 @@ const Sidebar = ({ isOpen, onClose }) => {
             <div className="p-6 border-b border-orange-500/30">
               <div className="flex justify-center items-center space-x-3">
                 <span className="flex justify-center w-auto items-center text-2xl font-bold bg-gradient-to-r from-orange-400 to-yellow-500 bg-clip-text text-transparent">
-                  <img src={Logo} width={100} alt="" />
+                  <img src={Logo} width={200} alt="" />
                 </span>
               </div>
             </div>
