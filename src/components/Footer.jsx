@@ -59,7 +59,7 @@ const Footer = () => {
         {/* Description Text */}
         <div className="mt-8 pt-6 border-t border-orange-500/30">
           <p className="text-gray-400 text-sm leading-relaxed max-w-4xl">
-            Ultrawin provides a smooth and secure betting experience with a variety of reliable payment options. Whether you're placing 
+            Stake-Manual Online-Hub provides a smooth and secure betting experience with a variety of reliable payment options. Whether you're placing 
             bets on casino games or sports, our platform ensures quick and hassle-free transactions. Enjoy the convenience of seamless 
             deposits and withdrawals, and focus on the thrill of the game.
           </p>
@@ -68,7 +68,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-6 pt-4 border-t border-orange-500/30 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © Copyright 2024. All Rights Reserved. Powered by Ultrawin.
+            © Copyright 2024. All Rights Reserved. Powered by Stake-Manual Online-Hub.
           </p>
           
           <div className="mt-4 md:mt-0">
