@@ -338,8 +338,8 @@ const HomePage = () => {
 
   {/* Sports Section */}
   {/* Sports Section */}
-  <div className="mb-2 mt-2">
-  <div className="flex items-center mb-2 sm:mb-6">
+  <div className="mb-4 mt-4">
+  <div className="flex items-center mb-4 sm:mb-6">
           <div className="relative">
             <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
               Sports
@@ -350,8 +350,8 @@ const HomePage = () => {
         </div>{" "}
   <div className="grid">
           <Swiper
-            slidesPerView={2.2}
-            spaceBetween={8}
+            slidesPerView={2.1}
+            spaceBetween={1}
             autoplay={{
               delay: 3000,
               disableOnInteraction: false,
@@ -371,7 +371,7 @@ const HomePage = () => {
               thresholdDelta: 50, // Minimum delta to trigger slide change
             }}
             breakpoints={{
-              320: { slidesPerView: 2.2, spaceBetween: 6 },
+              320: { slidesPerView: 3, spaceBetween: 4 },
               480: { slidesPerView: 3, spaceBetween: 10 },
               640: { slidesPerView: 4, spaceBetween: 13 },
               768: { slidesPerView: 5, spaceBetween: 16 },
@@ -448,76 +448,71 @@ const HomePage = () => {
                 bgColor: "from-cyan-500 to-cyan-700",
               },
             ].map((sport, index) => (
-              <SwiperSlide key={index} className="mySwiper2">
-                <div className="group relative">
-                  {/* Card Container */}
-                  <div
-                    className="w-full min-w-[6rem] max-w-[8rem] aspect-[4/2] rounded-2xl overflow-hidden 
-          cursor-pointer transform transition-all duration-300 ease-out
-        
-          shadow-lg border border-white/20 relative"
-                  >
-                    {/* Gradient Background */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${sport.bgColor}`}
-                    ></div>
+           <SwiperSlide key={index} className="mySwiper2">
+  <div className="group relative">
+    {/* Card Container */}
+    <div
+      className="w-full min-w-[7rem] max-w-[9rem] aspect-[3/2] rounded-2xl overflow-hidden 
+        cursor-pointer transform transition-all duration-300 ease-out
+       "
+    >
+      {/* Gradient Background */}
+    
+      {/* Overlay */}
+      <div
+        className="absolute inset-0
+         duration-300"
+      ></div>
 
-                    {/* Darker overlay for better contrast */}
-                    <div
-                      className="absolute inset-0 bg-black/30 group-hover:bg-black/20 
-            transition-colors duration-300"
-                    ></div>
+      {/* Content */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+        {/* Sport Icon */}
+        <div
+          className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center mb-3 
+            transform transition-transform duration-300 group-hover:scale-110 
+            bg-white/10 rounded-xl shadow-inner"
+        >
+          <img src={sport.icon} alt={sport.name} className="w-8 h-8 object-contain" />
+        </div>
 
-                    {/* Content Container */}
-                    <div className="absolute inset-0 flex  items-center justify-center p-3 text-center ">
-                      {/* Sport Icon */}
-                      <div
-                        className="text-3xl sm:text-4xl mb-2 transform transition-transform duration-300 
-              group-hover:scale-110 drop-shadow-lg"
-                      >
-                        <img src={sport.icon} alt="" />
-                      </div>
+        {/* Sport Name */}
+        <div
+          className="text-[0.7rem] sm:text-sm font-semibold text-white uppercase tracking-wide 
+            leading-tight drop-shadow-lg transform transition-transform duration-300 
+            group-hover:scale-105"
+        >
+          {sport.name}
+        </div>
+      </div>
 
-                      {/* Sport Name */}
-                      <div
-                        className="text-[0.65rem] sm:text-xs font-bold text-white uppercase tracking-wider 
-              leading-tight drop-shadow-lg text-center transform transition-transform duration-300 
-              group-hover:scale-105"
-                      >
-                        {sport.name}
-                      </div>
-                    </div>
+      {/* Hover Glow Effect */}
+    
 
-                    {/* Hover Glow Effect */}
-                    <div
-                      className="absolute inset-0 rounded-2xl bg-white opacity-0 group-hover:opacity-10 
-            transition-opacity duration-300"
-                    ></div>
+      {/* Active Indicator */}
+      {["CRICKET", "FOOTBALL", "TENNIS"].includes(sport.name) && (
+        <div
+          className="absolute -top-2 -right-2 w-3.5 h-3.5 bg-yellow-400 rounded-full 
+            border-2 border-white shadow-lg animate-pulse"
+        ></div>
+      )}
 
-                    {/* Active Indicator for Popular Sports */}
-                    {["CRICKET", "FOOTBALL", "TENNIS"].includes(sport.name) && (
-                      <div
-                        className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full 
-              border-2 border-white shadow-lg  animate-pulse"
-                      ></div>
-                    )}
-
-                    {/* Bottom Shine Effect */}
-                    <div
-                      className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t 
-            from-white/20 to-transparent opacity-0 group-hover:opacity-100 
-            transition-opacity duration-300"
-                    ></div>
-                  </div>
-
-                  {/* Bottom Glow Effect */}
-                  <div
-                    className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-8 h-2 
-          bg-white/50 rounded-full blur-md opacity-0 group-hover:opacity-60 
+      {/* Bottom Shine */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t 
+          from-white/20 to-transparent opacity-0 group-hover:opacity-100 
           transition-opacity duration-300"
-                  ></div>
-                </div>
-              </SwiperSlide>
+      ></div>
+    </div>
+
+    {/* Bottom Glow Effect */}
+    <div
+      className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-10 h-2 
+        bg-white/50 rounded-full blur-md opacity-0 group-hover:opacity-60 
+        transition-opacity duration-300"
+    ></div>
+  </div>
+</SwiperSlide>
+
             ))}
           </Swiper>
         </div>
