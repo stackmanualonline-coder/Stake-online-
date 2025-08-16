@@ -313,25 +313,26 @@ const HomePage = () => {
   return (
     <>
       {/* Hero Banners */}
-      <div className="grid grid-cols-2 sm:gap-4 lg:gap-6">
-        {/* First Hero Banner */}
-        <div className="relative rounded-lg sm:rounded-2xl overflow-hidden h-32 sm:h-48 md:h-56 lg:h-64 bg-[#111827]">
-          <img
-            src={isMobile ? risimg1 : img1}
-            alt="Hero Banner 1"
-            className="w-full h-full object-contain transition-transform duration-300"
-          />
-        </div>
+  {/* Hero Banners */}
+<div className="grid grid-cols-2 gap-2 sm:gap-4 lg:gap-6">
+  {/* First Hero Banner */}
+  <div className="relative rounded-lg sm:rounded-2xl overflow-hidden h-40 sm:h-48 md:h-56 lg:h-55 bg-[#111827]">
+    <img
+      src={isMobile ? risimg1 : img1}
+      alt="Hero Banner 1"
+      className="w-full h-full object-cover transition-transform duration-300"
+    />
+  </div>
+  {/* Second Hero Banner */}
+  <div className="relative rounded-lg sm:rounded-2xl overflow-hidden h-40 sm:h-48 md:h-56 lg:h-55 bg-[#111827]">
+    <img
+      src={isMobile ? risimg2 : img2}
+      alt="Hero Banner 2"
+      className="w-full h-full object-cover transition-transform duration-300"
+    />
+  </div>
+</div>
 
-        {/* Second Hero Banner */}
-        <div className="relative rounded-lg sm:rounded-2xl overflow-hidden h-32 sm:h-48 md:h-56 lg:h-64 bg-[#111827]">
-          <img
-            src={isMobile ? risimg2 : img2}
-            alt="Hero Banner 2"
-            className="w-full h-full object-contain transition-transform duration-300 "
-          />
-        </div>
-      </div>
 
       {/* <Banner/> */}
 
