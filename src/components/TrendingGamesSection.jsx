@@ -61,7 +61,7 @@ const TrendingGamesSection = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-b from-slate-900 via-gray-900 to-black py-4 relative overflow-hidden">
+    <div className="bg-gradient-to-b from-slate-900 via-gray-900 to-black  sm:py-4 relative overflow-hidden">
       <div className="max-w-7xl mx-auto  relative">
         <TrendingHeader />
         <TrendingGrid games={trendingGames} />
@@ -72,7 +72,7 @@ const TrendingGamesSection = () => {
 
 const TrendingHeader = () => {
   return (
-    <div className="flex items-center mb-6 sm:mb-8">
+    <div className="flex items-center mb-3 sm:mb-8">
       <div className="relative">
         <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-orange-300 via-yellow-400 to-orange-300 bg-clip-text text-transparent">
           Trending Games

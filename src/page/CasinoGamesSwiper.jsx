@@ -315,23 +315,12 @@ const CasinoGamesSwiper = () => {
 
   return (
     <>
-      {/* Your existing Hero Banners code */}
-      <div className="grid lg:grid-cols-2 gap-6 mb-8">
-        {/* ... existing hero banners ... */}
-      </div>
+   
 
-      {/* Your existing Sports Section */}
-      <div className="mb-8">
-        {/* ... existing sports section ... */}
-      </div>
 
-      {/* Your existing Top Matches */}
-      <div className="mb-8">
-        {/* ... existing top matches section ... */}
-      </div>
 
       {/* NEW: Recommended Games Section - Matching the Image */}
-      <div className="mb-8">
+      <div className="sm:mb-8 mb-4 mt-3">
    <div className="flex items-center mb-6 sm:mb-8">
       <div className="relative">
         <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
@@ -415,8 +404,8 @@ const CasinoGamesSwiper = () => {
       </div>
 
       {/* NEW: Live Casino Games Section - Matching the Image */}
-      <div className="mb-8">
-   <div className="flex items-center mb-6 sm:mb-8">
+      <div className="sm:mb-8 mb-2">
+   <div className="flex items-center mb-4 sm:mb-8">
       <div className="relative">
         <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
          Live Casino Games
@@ -490,7 +479,7 @@ const CasinoGamesSwiper = () => {
         </div>
       </div>
       {/* NEW: Live Casino Games Section - Matching the Image */}
-      <div className="mb-8">
+      <div className="sm:mb-8 mb-2">
    <div className="flex items-center mb-6 sm:mb-8">
       <div className="relative">
         <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">

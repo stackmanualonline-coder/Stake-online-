@@ -339,7 +339,7 @@ const HomePage = () => {
       {/* Sports Section */}
       {/* Sports Section */}
       <div className="mb-3">
-        <div className="flex items-center mb-4 sm:mb-8">
+        <div className="flex items-center mb-2 sm:mb-8">
           <div className="relative">
             <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
               Sports
@@ -523,8 +523,8 @@ const HomePage = () => {
       </div>
 
       {/* Top Matches */}
-      <div className="mb-8">
-        <div className="flex items-center mb-6 sm:mb-8">
+      <div className="mb-2">
+        <div className="flex items-center mb-2 sm:mb-8">
           <div className="relative">
             <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
               Top Matches
