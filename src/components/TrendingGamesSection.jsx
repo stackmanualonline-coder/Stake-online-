@@ -28,7 +28,7 @@ const TrendingGamesSection = () => {
     },
     {
       id: 3,
-      title: 'LUCKY LACE',
+      title: 'LUCKY ACE',
       subtitle: 'Live Casino',
       image: img3,
       icon: '💎',
@@ -62,7 +62,7 @@ const TrendingGamesSection = () => {
 
   return (
     <div className="bg-gradient-to-b from-slate-900 via-gray-900 to-black py-4 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto lg:px-6 relative">
+      <div className="max-w-7xl mx-auto  relative">
         <TrendingHeader />
         <TrendingGrid games={trendingGames} />
       </div>
