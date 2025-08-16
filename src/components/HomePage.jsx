@@ -338,8 +338,8 @@ const HomePage = () => {
 
       {/* Sports Section */}
       {/* Sports Section */}
-      <div className="mb-8">
-        <div className="flex items-center mb-6 sm:mb-8">
+      <div className="mb-3">
+        <div className="flex items-center mb-4 sm:mb-8">
           <div className="relative">
             <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
               Sports
@@ -745,17 +745,16 @@ const HomePage = () => {
 
       {/* New Launch Games */}
       <div className="mb-4">
-        <div className="flex items-center justify-between mb-6">
           <div className="flex items-center mb-6 sm:mb-8">
-            <div className="relative">
-              <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
-                New Launch
-              </h2>
-              <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
-            </div>
-            <div className="ml-4 sm:ml-6 h-px bg-gradient-to-r from-cyan-400 via-purple-400 to-transparent flex-1 max-w-60"></div>
-          </div>
-        </div>
+      <div className="relative">
+        <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
+         New Launch
+
+        </h2>
+        <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+      </div>
+      <div className="ml-4 sm:ml-6 h-px bg-gradient-to-r from-cyan-400 via-purple-400 to-transparent flex-1 max-w-60"></div>
+    </div>    
         <div className="grid">
       <Swiper
             slidesPerView={2.5}

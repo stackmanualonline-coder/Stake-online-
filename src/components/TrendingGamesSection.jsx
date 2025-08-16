@@ -61,8 +61,8 @@ const TrendingGamesSection = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-b from-slate-900 via-gray-900 to-black py-8 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 lg:px-6 relative">
+    <div className="bg-gradient-to-b from-slate-900 via-gray-900 to-black py-4 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto lg:px-6 relative">
         <TrendingHeader />
         <TrendingGrid games={trendingGames} />
       </div>
