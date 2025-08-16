@@ -313,22 +313,22 @@ const HomePage = () => {
   return (
     <>
       {/* Hero Banners */}
-  {/* Hero Banners */}
-<div className="grid grid-cols-2 gap-2 sm:gap-4 lg:gap-6">
+    {/* Hero Banners */}
+  <div className="grid grid-cols-2 gap-0.5 sm:gap-2 lg:gap-4">
   {/* First Hero Banner */}
-  <div className="relative rounded-lg sm:rounded-2xl overflow-hidden h-40 sm:h-48 md:h-56 lg:h-55 bg-[#111827]">
+  <div className="relative rounded-lg sm:rounded-2xl overflow-hidden h-32 sm:h-44 md:h-56 lg:h-55 bg-[#111827] flex items-center justify-center">
     <img
       src={isMobile ? risimg1 : img1}
       alt="Hero Banner 1"
-      className="w-full h-full object-cover transition-transform duration-300"
+      className={isMobile ? "w-full h-full object-fill transition-transform duration-300" : "w-full h-full object-cover transition-transform duration-300"}
     />
   </div>
   {/* Second Hero Banner */}
-  <div className="relative rounded-lg sm:rounded-2xl overflow-hidden h-40 sm:h-48 md:h-56 lg:h-55 bg-[#111827]">
+  <div className="relative rounded-lg sm:rounded-2xl overflow-hidden h-32 sm:h-44 md:h-56 lg:h-55 bg-[#111827] flex items-center justify-center">
     <img
       src={isMobile ? risimg2 : img2}
       alt="Hero Banner 2"
-      className="w-full h-full object-cover transition-transform duration-300"
+      className={isMobile ? "w-full h-full object-fill transition-transform duration-300" : "w-full h-full object-cover transition-transform duration-300"}
     />
   </div>
 </div>
@@ -336,10 +336,10 @@ const HomePage = () => {
 
       {/* <Banner/> */}
 
-      {/* Sports Section */}
-      {/* Sports Section */}
-      <div className="mb-3 mt-4">
-        <div className="flex items-center mb-2 sm:mb-8">
+  {/* Sports Section */}
+  {/* Sports Section */}
+  <div className="mb-2 mt-2">
+  <div className="flex items-center mb-2 sm:mb-6">
           <div className="relative">
             <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
               Sports
@@ -348,10 +348,10 @@ const HomePage = () => {
           </div>
           <div className="ml-4 sm:ml-6 h-px bg-gradient-to-r from-cyan-400 via-purple-400 to-transparent flex-1 max-w-60"></div>
         </div>{" "}
-        <div className="grid">
+  <div className="grid">
           <Swiper
-            slidesPerView={2.5}
-            spaceBetween={15}
+            slidesPerView={2.2}
+            spaceBetween={8}
             autoplay={{
               delay: 3000,
               disableOnInteraction: false,
@@ -371,8 +371,9 @@ const HomePage = () => {
               thresholdDelta: 50, // Minimum delta to trigger slide change
             }}
             breakpoints={{
-              480: { slidesPerView: 3, spaceBetween: 12 },
-              640: { slidesPerView: 4, spaceBetween: 15 },
+              320: { slidesPerView: 2.2, spaceBetween: 6 },
+              480: { slidesPerView: 3, spaceBetween: 10 },
+              640: { slidesPerView: 4, spaceBetween: 13 },
               768: { slidesPerView: 5, spaceBetween: 16 },
               1024: { slidesPerView: 6, spaceBetween: 18 },
               1280: { slidesPerView: 8, spaceBetween: 20 },
@@ -523,229 +524,235 @@ const HomePage = () => {
       </div>
 
       {/* Top Matches */}
-      <div className="mb-2">
-        <div className="flex items-center mb-2 sm:mb-8">
-          <div className="relative">
-            <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
-              Top Matches
-            </h2>
-            <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
-          </div>
-          <div className="ml-4 sm:ml-6 h-px bg-gradient-to-r from-cyan-400 via-purple-400 to-transparent flex-1 max-w-60"></div>
-        </div>{" "}
-        <div className="grid">
-          <Swiper
-            slidesPerView={1.1}
-            spaceBetween={15}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-            }}
-            loop={true}
-            freeMode={true}
-            // Mouse wheel and trackpad support
-            simulateTouch={true}
-            grabCursor={true}
-            touchRatio={1}
-            touchAngle={45}
-            allowTouchMove={true}
-            mousewheel={{
-              enabled: true,
-              forceToAxis: true,
-              sensitivity: 1,
-              thresholdDelta: 50,
-              releaseOnEdges: true,
-            }}
-            breakpoints={{
-              480: {
-                slidesPerView: 1.5,
-                spaceBetween: 15,
-              },
-              640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 2.5,
-                spaceBetween: 25,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-              },
-              1280: {
-                slidesPerView: 3.5,
-                spaceBetween: 30,
-              },
-            }}
-            modules={[FreeMode, Autoplay, Mousewheel]}
-            className="mySwiper"
-          >
-            {topMatches.map((match, idx) => (
-              <SwiperSlide key={idx} className="mySwiper2">
-                <div className="group relative w-full max-w-80 h-full min-h-[300px] cursor-pointer">
-                  {/* Card Container with background image */}
-                  <div
-                    className="relative h-full rounded-2xl overflow-hidden shadow-xl border border-white/10 
-          transform transition-all duration-300 ease-out hover:scale-105 hover:shadow-2xl"
-                  >
-                    {/* Background Image based on sport */}
-                    <div className="absolute inset-0">
-                      <img
-                        src={
-                          match.sport === "FOOTBALL"
-                            ? "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=300&fit=crop&crop=center"
-                            : match.sport === "CRICKET"
-                            ? "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=400&h=300&fit=crop&crop=center"
-                            : "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400&h=300&fit=crop&crop=center"
-                        }
-                        alt={match.sport}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        onError={(e) => {
-                          e.target.style.display = "none";
-                          e.target.nextSibling.style.display = "block";
-                        }}
-                      />
-                      {/* Fallback gradient */}
+    {/* Top Matches */}
+    <div className="mb-1">
+  <div className="flex items-center mb-2 sm:mb-6">
+    <div className="relative">
+      <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
+        Top Matches
+      </h2>
+      <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+    </div>
+    <div className="ml-4 sm:ml-6 h-px bg-gradient-to-r from-cyan-400 via-purple-400 to-transparent flex-1 max-w-60"></div>
+  </div>{" "}
+  <div className="grid">
+    <Swiper
+      slidesPerView={1.05}
+      spaceBetween={8}
+      autoplay={{
+        delay: 5000,
+        disableOnInteraction: false,
+      }}
+      loop={true}
+      freeMode={true}
+      // Mouse wheel and trackpad support
+      simulateTouch={true}
+      grabCursor={true}
+      touchRatio={1}
+      touchAngle={45}
+      allowTouchMove={true}
+      mousewheel={{
+        enabled: true,
+        forceToAxis: true,
+        sensitivity: 1,
+        thresholdDelta: 50,
+        releaseOnEdges: true,
+      }}
+      breakpoints={{
+        320: {
+          slidesPerView: 1.05,
+          spaceBetween: 6,
+        },
+        480: {
+          slidesPerView: 1.5,
+          spaceBetween: 10,
+        },
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 15,
+        },
+        768: {
+          slidesPerView: 2.5,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 25,
+        },
+        1280: {
+          slidesPerView: 3.5,
+          spaceBetween: 30,
+        },
+      }}
+      modules={[FreeMode, Autoplay, Mousewheel]}
+      className="mySwiper"
+    >
+      {topMatches.map((match, idx) => (
+        <SwiperSlide key={idx} className="mySwiper2">
+          <div className="group relative w-full max-w-80 aspect-[4/2] sm:aspect-auto sm:h-full sm:min-h-[300px] cursor-pointer">
+            {/* Card Container with background image */}
+            <div
+              className="relative h-full rounded-2xl overflow-hidden shadow-xl border border-white/10 
+        transform transition-all duration-300 ease-out hover:scale-105 hover:shadow-2xl"
+            >
+              {/* Background Image based on sport */}
+              <div className="absolute inset-0">
+                <img
+                  src={
+                    match.sport === "FOOTBALL"
+                      ? "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=300&fit=crop&crop=center"
+                      : match.sport === "CRICKET"
+                      ? "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=400&h=300&fit=crop&crop=center"
+                      : "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400&h=300&fit=crop&crop=center"
+                  }
+                  alt={match.sport}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  onError={(e) => {
+                    e.target.style.display = "none";
+                    e.target.nextSibling.style.display = "block";
+                  }}
+                />
+                {/* Fallback gradient */}
+                <div
+                  className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900"
+                  style={{ display: "none" }}
+                ></div>
+              </div>
+
+              {/* Dark overlay for better readability */}
+              <div
+                className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/80 
+          group-hover:from-black/60 group-hover:via-black/50 group-hover:to-black/70 
+          transition-all duration-300"
+              ></div>
+
+              {/* Content Container */}
+              <div className="relative h-full p-3 sm:p-4 md:p-6 flex flex-col">
+                {/* Top Section - Teams and Live Badge */}
+                <div className="flex items-center justify-between mb-2 sm:mb-4">
+                  <div className="flex space-x-1 sm:space-x-2">
+                    {match.teams.map((team, i) => (
                       <div
-                        className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900"
-                        style={{ display: "none" }}
-                      ></div>
+                        key={i}
+                        className={`w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 ${team.color} rounded-full flex items-center 
+                    justify-center text-xs font-bold text-white shadow-lg
+                    border-2 border-white/20 backdrop-blur-sm`}
+                      >
+                        {team.label}
+                      </div>
+                    ))}
+                  </div>
+                  {match.live && (
+                    <div
+                      className="bg-red-500 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-xs font-bold animate-pulse 
+                shadow-lg border border-red-400 text-white"
+                    >
+                      🔴 LIVE
                     </div>
+                  )}
+                </div>
 
-                    {/* Dark overlay for better readability */}
-                    <div
-                      className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/80 
-            group-hover:from-black/60 group-hover:via-black/50 group-hover:to-black/70 
-            transition-all duration-300"
-                    ></div>
-
-                    {/* Content Container */}
-                    <div className="relative  h-full p-4 sm:p-6 flex flex-col">
-                      {/* Top Section - Teams and Live Badge */}
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex space-x-2">
-                          {match.teams.map((team, i) => (
-                            <div
-                              key={i}
-                              className={`w-8 h-8 sm:w-9 sm:h-9 ${team.color} rounded-full flex items-center 
-                      justify-center text-xs sm:text-sm font-bold text-white shadow-lg
-                      border-2 border-white/20 backdrop-blur-sm`}
-                            >
-                              {team.label}
-                            </div>
-                          ))}
-                        </div>
-                        {match.live && (
-                          <div
-                            className="bg-red-500 px-3 py-1 rounded-full text-xs font-bold animate-pulse 
-                  shadow-lg border border-red-400 text-white"
-                          >
-                            🔴 LIVE
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Match Information - Flexible grow area */}
-                      <div className="mb-4 flex-grow">
-                        {/* Sport Badge */}
-                        <div
-                          className="inline-block bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full 
-                text-xs font-bold text-white uppercase tracking-wider mb-3 border border-white/20"
-                        >
-                          {match.sport}
-                        </div>
-
-                        {/* Event */}
-                        <div className="text-xs sm:text-sm mb-2 text-gray-300 font-medium">
-                          {match.event}
-                        </div>
-
-                        {/* Match Title */}
-                        <div
-                          className="font-bold text-sm sm:text-base text-white mb-3 leading-tight 
-                drop-shadow-lg"
-                        >
-                          {match.match}
-                        </div>
-
-                        {/* Time with icon */}
-                        <div className="flex items-center text-xs text-gray-400">
-                          <svg
-                            className="w-4 h-4 mr-2"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                          {match.time}
-                        </div>
-                      </div>
-
-                      {/* Odds Section */}
-                      <div className="mt-auto">
-                        <div className="text-xs text-gray-400 mb-2 font-medium">
-                          Betting Odds
-                        </div>
-                        <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                          {match.odds.map(
-                            (odd, i) =>
-                              odd && (
-                                <div
-                                  key={i}
-                                  className={`px-3 py-2 rounded-lg text-xs sm:text-sm text-center font-bold 
-                        cursor-pointer backdrop-blur-sm border transition-all duration-200
-                        hover:scale-105 hover:shadow-lg ${
-                          i % 2 === 0
-                            ? "bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 border-pink-400/50"
-                            : "bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 border-purple-400/50"
-                        } text-white shadow-lg`}
-                                >
-                                  {odd}
-                                </div>
-                              )
-                          )}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Decorative Elements */}
-                    <div
-                      className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-white/5 to-transparent 
-            rounded-bl-full"
-                    ></div>
-                    <div
-                      className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-white/5 to-transparent 
-            rounded-tr-full"
-                    ></div>
-
-                    {/* Hover Glow Effect */}
-                    <div
-                      className="absolute inset-0 rounded-2xl bg-white opacity-0 group-hover:opacity-10 
-            transition-opacity duration-300"
-                    ></div>
+                {/* Match Information - Flexible grow area */}
+                <div className="mb-2 sm:mb-4 flex-grow">
+                  {/* Sport Badge */}
+                  <div
+                    className="inline-block bg-white/10 backdrop-blur-sm px-2 py-0.5 sm:px-3 sm:py-1 rounded-full 
+              text-xs font-bold text-white uppercase tracking-wider mb-1 sm:mb-3 border border-white/20"
+                  >
+                    {match.sport}
                   </div>
 
-                  {/* Bottom Glow Effect */}
-                  <div
-                    className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-16 h-3 
-          bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-full blur-md 
-          opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  ></div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-      </div>
+                  {/* Event */}
+                  <div className="text-xs mb-1 sm:mb-2 text-gray-300 font-medium">
+                    {match.event}
+                  </div>
 
-      {/* New Launch Games */}
-      <div className="mb-4">
-          <div className="flex items-center mb-6 sm:mb-8">
+                  {/* Match Title */}
+                  <div
+                    className="font-bold text-sm mb-1 sm:mb-3 text-white leading-tight 
+              drop-shadow-lg"
+                  >
+                    {match.match}
+                  </div>
+
+                  {/* Time with icon */}
+                  <div className="flex items-center text-xs text-gray-400">
+                    <svg
+                      className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    {match.time}
+                  </div>
+                </div>
+
+                {/* Odds Section */}
+                <div className="mt-auto">
+                  <div className="text-xs text-gray-400 mb-1 sm:mb-2 font-medium">
+                    Betting Odds
+                  </div>
+                  <div className="grid grid-cols-3 sm:grid-cols-5 gap-1 sm:gap-2">
+                    {match.odds.map(
+                      (odd, i) =>
+                        odd && (
+                          <div
+                            key={i}
+                            className={`px-2 py-1 sm:px-3 sm:py-2 rounded-lg text-xs text-center font-bold 
+                      cursor-pointer backdrop-blur-sm border transition-all duration-200
+                      hover:scale-105 hover:shadow-lg ${
+                        i % 2 === 0
+                          ? "bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 border-pink-400/50"
+                          : "bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 border-purple-400/50"
+                      } text-white shadow-lg`}
+                          >
+                            {odd}
+                          </div>
+                        )
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Decorative Elements */}
+              <div
+                className="absolute top-0 right-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-white/5 to-transparent 
+          rounded-bl-full"
+              ></div>
+              <div
+                className="absolute bottom-0 left-0 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-tr from-white/5 to-transparent 
+          rounded-tr-full"
+              ></div>
+
+              {/* Hover Glow Effect */}
+              <div
+                className="absolute inset-0 rounded-2xl bg-white opacity-0 group-hover:opacity-10 
+          transition-opacity duration-300"
+              ></div>
+            </div>
+
+            {/* Bottom Glow Effect */}
+            <div
+              className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-16 h-3 
+        bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-full blur-md 
+        opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            ></div>
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  </div>
+</div>
+
+
+  {/* New Launch Games */}
+  <div className="mb-2">
+          <div className="flex items-center mb-3 sm:mb-6">
       <div className="relative">
         <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
          New Launch
@@ -755,10 +762,10 @@ const HomePage = () => {
       </div>
       <div className="ml-4 sm:ml-6 h-px bg-gradient-to-r from-cyan-400 via-purple-400 to-transparent flex-1 max-w-60"></div>
     </div>    
-        <div className="grid">
-      <Swiper
-            slidesPerView={2.5}
-            spaceBetween={15}
+  <div className="grid">
+  <Swiper
+    slidesPerView={2.2}
+    spaceBetween={8}
             autoplay={{
               delay: 3000,
               disableOnInteraction: false,
@@ -778,8 +785,9 @@ const HomePage = () => {
               thresholdDelta: 50, // Minimum delta to trigger slide change
             }}
             breakpoints={{
-              480: { slidesPerView: 3, spaceBetween: 12 },
-              640: { slidesPerView: 4, spaceBetween: 15 },
+              320: { slidesPerView: 2.2, spaceBetween: 6 },
+              480: { slidesPerView: 3, spaceBetween: 10 },
+              640: { slidesPerView: 4, spaceBetween: 13 },
               768: { slidesPerView: 5, spaceBetween: 16 },
               1024: { slidesPerView: 6, spaceBetween: 18 },
               1280: { slidesPerView: 8, spaceBetween: 20 },
