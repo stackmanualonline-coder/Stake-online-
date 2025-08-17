@@ -22,7 +22,7 @@ const Header = ({ setSidebarOpen }) => {
     <>
       <header className="bg-gradient-to-r from-slate-900 via-gray-900 to-black border-b border-orange-500/30 sticky top-0 z-50 backdrop-blur-sm">
         {/* Main Header */}
-        <div className="flex items-center justify-between md:justify-center px-3 py-2.5">
+        <div className="flex items-center justify-between md:justify-center px-1 py-1">
           {/* Left Section - Mobile Menu + Logo */}
           <div className="flex items-center space-x-3">
             <button 
