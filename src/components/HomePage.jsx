@@ -316,19 +316,19 @@ const HomePage = () => {
     {/* Hero Banners */}
   <div className="grid grid-cols-2 gap-0.5 sm:gap-2 lg:gap-4">
   {/* First Hero Banner */}
-  <div className="relative rounded-lg sm:rounded-2xl overflow-hidden  sm:h-44 md:h-[20rem] lg:h-55 bg-[#111827] flex items-center justify-center">
+  <div className="relative rounded-lg sm:rounded-2xl overflow-hidden  sm:h-44 md:h-[20rem] lg:h-auto bg-[#111827] flex items-center justify-center">
     <img
       src={isMobile ? risimg1 : img1}
       alt="Hero Banner 1"
-      className={isMobile ? "w-full h-full object-fill transition-transform duration-300" : "w-full h-full object-cover transition-transform duration-300"}
+      className={isMobile ? "w-full h-full object-fill transition-transform duration-300" : "w-full h-full object-fill transition-transform duration-300"}
     />
   </div>
   {/* Second Hero Banner */}
-  <div className="relative rounded-lg sm:rounded-2xl overflow-hidden  sm:h-44 md:h-[20rem] lg:h-55 bg-[#111827] flex items-center justify-center">
+  <div className="relative rounded-lg sm:rounded-2xl overflow-hidden  sm:h-44 md:h-[20rem] lg:h-auto bg-[#111827] flex items-center justify-center">
     <img
       src={isMobile ? risimg2 : img2}
       alt="Hero Banner 2"
-      className={isMobile ? "w-full h-full object-fill transition-transform duration-300" : "w-full h-full object-cover transition-transform duration-300"}
+      className={isMobile ? "w-full h-full object-fill transition-transform duration-300" : "w-full h-full object-fill transition-transform duration-300"}
     />
   </div>
 </div>
