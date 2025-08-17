@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen  text-white">
       {/* Header */}
 
 
@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
         {/* Main Content */}
         <div className="flex-1 min-h-screen">
 <Header setSidebarOpen ={setSidebarOpen}/>
-          <div className="p-2 z-0 sm:p-6">
+          <div className="p-2 z-0 bg-gray-900 sm:p-6">
             {children}
           </div>
           <BottomNavigation/>
