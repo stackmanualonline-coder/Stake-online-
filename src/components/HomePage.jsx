@@ -560,11 +560,19 @@ const HomePage = () => {
       }}
       breakpoints={{
         320: {
-          slidesPerView: 1.05,
+          slidesPerView: 1.2,
           spaceBetween: 6,
         },
         425: {
           slidesPerView: 1.3,
+          spaceBetween: 10,
+        },
+        450: {
+          slidesPerView: 1.6,
+          spaceBetween: 10,
+        },
+        570: {
+          slidesPerView: 2,
           spaceBetween: 10,
         },
         640: {
