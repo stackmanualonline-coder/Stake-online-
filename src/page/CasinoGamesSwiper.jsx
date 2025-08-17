@@ -320,8 +320,8 @@ const CasinoGamesSwiper = () => {
 
 
       {/* NEW: Recommended Games Section - Matching the Image */}
-      <div className="sm:mb-8 mb-4 mt-3">
-   <div className="flex items-center mb-3 sm:mb-8">
+      <div className="sm:mb-8 mb-4 mt-4">
+   <div className="flex items-center mb-4 sm:mb-8">
       <div className="relative">
         <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
           Recommended Games
@@ -404,8 +404,8 @@ const CasinoGamesSwiper = () => {
       </div>
 
       {/* NEW: Live Casino Games Section - Matching the Image */}
-      <div className="sm:mb-8 mb-2">
-   <div className="flex items-center mb-3 sm:mb-8">
+      <div className="sm:mb-8 mb-4">
+   <div className="flex items-center mb-4 sm:mb-8">
       <div className="relative">
         <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
          Live Casino Games
@@ -479,8 +479,8 @@ const CasinoGamesSwiper = () => {
         </div>
       </div>
       {/* NEW: Live Casino Games Section - Matching the Image */}
-      <div className="sm:mb-8 mb-2">
-   <div className="flex items-center mb-3 sm:mb-8">
+      <div className="sm:mb-8 mb-4">
+   <div className="flex items-center mb-4 sm:mb-8">
       <div className="relative">
         <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
          Slots Games
