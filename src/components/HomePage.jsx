@@ -7,7 +7,7 @@ import cricketImg from "../assets/Sports/cricket.1d9c2d59.webp";
 import footballImg from "../assets/Sports/football.2fdc311b.webp";
 import tennisImg from "../assets/Sports/tennis.8553c42e.webp";
 import kabaddiImg from "../assets/Sports/kabaddi.7f9dd034.webp";
-import basketballImg from "../assets/Sports/binary.219a1f7d.webp";
+import basketballImg from "../assets/Sports/basketball.b74ce808.webp";
 import baseballImg from "../assets/Sports/baseball.6ab62b36.webp";
 import greyhoundImg from "../assets/Sports/greyhound.33cb9e90.webp";
 import dartsImg from "../assets/Sports/darts.7d14984e.webp";
@@ -338,8 +338,8 @@ const HomePage = () => {
 
   {/* Sports Section */}
   {/* Sports Section */}
-  <div className="mb-2 mt-2">
-  <div className="flex items-center mb-2 sm:mb-6">
+  <div className="mb-4 mt-4">
+  <div className="flex items-center mb-4 sm:mb-8">
           <div className="relative">
             <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
               Sports
@@ -371,9 +371,9 @@ const HomePage = () => {
               thresholdDelta: 50, // Minimum delta to trigger slide change
             }}
             breakpoints={{
-              320: { slidesPerView: 3, spaceBetween: 4 },
-              480: { slidesPerView: 3, spaceBetween: 10 },
-              640: { slidesPerView: 4, spaceBetween: 13 },
+              320: { slidesPerView: 2, spaceBetween: 4 },
+              480: { slidesPerView: 2, spaceBetween: 4 },
+              640: { slidesPerView: 4, spaceBetween: 4 },
               768: { slidesPerView: 5, spaceBetween: 16 },
               1024: { slidesPerView: 6, spaceBetween: 18 },
               1280: { slidesPerView: 8, spaceBetween: 20 },
@@ -452,7 +452,7 @@ const HomePage = () => {
                 <div className="group relative">
                   {/* Card Container */}
                   <div
-                    className="w-full min-w-[6rem] max-w-[8rem] aspect-[5/2] rounded-2xl overflow-hidden 
+                    className="w-full sm:min-w-[8rem] aspect-[6/2] rounded-2xl overflow-hidden 
           cursor-pointer transform transition-all duration-300 ease-out
         
           shadow-lg border border-white/20 relative"
@@ -461,7 +461,7 @@ const HomePage = () => {
                     <div
                       className={`absolute inset-0 bg-gradient-to-br ${sport.bgColor}`}
                     ></div>
-
+                     
                     {/* Darker overlay for better contrast */}
                     <div
                       className="absolute inset-0 bg-black/30 group-hover:bg-black/20 
@@ -469,13 +469,13 @@ const HomePage = () => {
                     ></div>
 
                     {/* Content Container */}
-                    <div className="absolute inset-0 flex  items-center justify-center p-3 text-center ">
+                    <div className="absolute inset-0 flex  items-center justify-end p-3 text-center ">
                       {/* Sport Icon */}
                       <div
-                        className="text-3xl sm:text-4xl mb-2 transform transition-transform duration-300 
-              group-hover:scale-110 drop-shadow-lg"
+                        className="transform transition-transform duration-300 
+              group-hover:scale-110 drop-shadow-lg w-10 absolute left-1"
                       >
-                        <img src={sport.icon} alt="" />
+                        <img src={sport.icon} alt="" className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 object-contain"/>
                       </div>
 
                       {/* Sport Name */}
