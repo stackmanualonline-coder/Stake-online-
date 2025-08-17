@@ -563,8 +563,8 @@ const HomePage = () => {
           slidesPerView: 1.05,
           spaceBetween: 6,
         },
-        480: {
-          slidesPerView: 1.5,
+        425: {
+          slidesPerView: 1.3,
           spaceBetween: 10,
         },
         640: {
