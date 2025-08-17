@@ -316,7 +316,7 @@ const HomePage = () => {
     {/* Hero Banners */}
   <div className="grid grid-cols-2 gap-0.5 sm:gap-2 lg:gap-4">
   {/* First Hero Banner */}
-  <div className="relative rounded-lg sm:rounded-2xl overflow-hidden  sm:h-44 md:h-56 lg:h-55 bg-[#111827] flex items-center justify-center">
+  <div className="relative rounded-lg sm:rounded-2xl overflow-hidden  sm:h-44 md:h-[20rem] lg:h-55 bg-[#111827] flex items-center justify-center">
     <img
       src={isMobile ? risimg1 : img1}
       alt="Hero Banner 1"
@@ -324,7 +324,7 @@ const HomePage = () => {
     />
   </div>
   {/* Second Hero Banner */}
-  <div className="relative rounded-lg sm:rounded-2xl overflow-hidden  sm:h-44 md:h-56 lg:h-55 bg-[#111827] flex items-center justify-center">
+  <div className="relative rounded-lg sm:rounded-2xl overflow-hidden  sm:h-44 md:h-[20rem] lg:h-55 bg-[#111827] flex items-center justify-center">
     <img
       src={isMobile ? risimg2 : img2}
       alt="Hero Banner 2"
@@ -338,13 +338,13 @@ const HomePage = () => {
 
   {/* Sports Section */}
   {/* Sports Section */}
-  <div className="mb-2 mt-2">
-  <div className="flex items-center mb-2 sm:mb-4">
+ <div className="mb-4 mt-4">
+  <div className="flex items-center mb-4 sm:mb-8">
           <div className="relative">
             <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
               Sports
             </h2>
-            {/* <div   className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div> */}
+            <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
           </div>
           <div className="ml-4 sm:ml-6 h-px bg-gradient-to-r from-cyan-400 via-purple-400 to-transparent flex-1 max-w-60"></div>
         </div>{" "}
@@ -371,7 +371,7 @@ const HomePage = () => {
               thresholdDelta: 50, // Minimum delta to trigger slide change
             }}
             breakpoints={{
-              320: { slidesPerView: 2, spaceBetween: 4 },
+            320: { slidesPerView: 2, spaceBetween: 4 },
               480: { slidesPerView: 2, spaceBetween: 4 },
               640: { slidesPerView: 4, spaceBetween: 4 },
               768: { slidesPerView: 5, spaceBetween: 16 },
@@ -443,77 +443,81 @@ const HomePage = () => {
                 bgColor: "from-indigo-500 to-indigo-700",
               },
               {
-                name: "T. TENNIS",
+                name: "TABLE TENNIS",
                 icon: tableTennisImg,
                 bgColor: "from-cyan-500 to-cyan-700",
               },
             ].map((sport, index) => (
-       <SwiperSlide key={index} className="mySwiper2">
-  <div className="group relative flex justify-center">
-    {/* Card (pill) */}
-    <div
-      className="
-        relative flex items-center justify-center
-        rounded-xl border border-white/10
-        bg-[#1a2232]
-        px-5 py-3
-        shadow-[0_4px_10px_rgba(0,0,0,.25)]
-        hover:shadow-[0_6px_14px_rgba(0,0,0,.35)]
-        transition-transform duration-300 ease-out
-        hover:scale-[1.02]
-        w-[140px] sm:w-[160px]  /* 👈 fixed width */
-        overflow-visible
-      "
-    >
-      {/* ICON + BASE */}
-      <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-[42px] h-[40px]">
-        <div className="relative w-full h-full">
-          {/* Base glow */}
-          <div
-            className="
-              absolute left-1/2 -translate-x-1/2 bottom-1
-              w-[42px] h-[8px] rounded-full
-              bg-[radial-gradient(closest-side,rgba(59,130,246,0.8),rgba(59,130,246,0.15))]
-              blur-[1px]
-            "
-          />
-          {/* Base plate */}
-          <div
-            className="
-              absolute left-1/2 -translate-x-1/2 bottom-0
-              w-[44px] h-[12px] rounded-full
-              bg-[linear-gradient(180deg,#2563eb_0%,#1e40af_55%,#0b2a6f_100%)]
-              shadow-[inset_0_3px_6px_rgba(255,255,255,.18),inset_0_-3px_6px_rgba(0,0,0,.45)]
-            "
-          />
-          {/* Icon */}
-          <img
-            src={sport.icon}
-            alt={sport.name}
-            className="
-              absolute left-1/2 -translate-x-1/2 -top-1
-              w-7 h-7 object-contain
-              drop-shadow-[0_3px_6px_rgba(0,0,0,.35)]
-              transition-transform duration-300 group-hover:-translate-y-0.5
-            "
-          />
-        </div>
-      </div>
+              <SwiperSlide key={index} className="mySwiper2">
+                <div className="group relative">
+                  {/* Card Container */}
+                  <div
+                    className="
+                                  w-full sm:min-w-[8rem] aspect-[6/2] rounded-2xl overflow-hidden  
+          cursor-pointer transform transition-all duration-300 ease-out
+        
+          shadow-lg border border-white/20 relative"
+                  >
+                    {/* Gradient Background */}
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${sport.bgColor}`}
+                    ></div>
+                     
+                    {/* Darker overlay for better contrast */}
+                    <div
+                      className="absolute inset-0 bg-black/30 group-hover:bg-black/20 
+            transition-colors duration-300"
+                    ></div>
 
-      {/* Sport Name */}
-      <div className="ml-6 text-white  font-bold uppercase tracking-wide text-xs sm:text-sm text-center">
-        {sport.name}
-      </div>
+                    {/* Content Container */}
+<div className="absolute inset-0 flex  items-center justify-end p-3 text-center ">                      {/* Sport Icon */}
+                      <div
+                        className="transform transition-transform duration-300 
+              group-hover:scale-110 drop-shadow-lg w-10 absolute left-1"
+                      >
+                        <img src={sport.icon} alt="" className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 object-contain"/>
+                      </div>
 
-      {/* Active indicator */}
-      {/* {["CRICKET", "FOOTBALL", "TENNIS"].includes(sport.name) && (
-        <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full border-2 border-white shadow-lg animate-pulse" />
-      )} */}
-    </div>
-  </div>
-</SwiperSlide>
+                      {/* Sport Name */}
+                      <div
+                        className="text-[0.65rem] sm:text-xs font-bold text-white uppercase tracking-wider 
+              leading-tight drop-shadow-lg text-center transform transition-transform duration-300 
+              group-hover:scale-105"
+                      >
+                        {sport.name}
+                      </div>
+                    </div>
 
+                    {/* Hover Glow Effect */}
+                    <div
+                      className="absolute inset-0 rounded-2xl bg-white opacity-0 group-hover:opacity-10 
+            transition-opacity duration-300"
+                    ></div>
 
+                    {/* Active Indicator for Popular Sports */}
+                    {["CRICKET", "FOOTBALL", "TENNIS"].includes(sport.name) && (
+                      <div
+                        className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full 
+              border-2 border-white shadow-lg  animate-pulse"
+                      ></div>
+                    )}
+
+                    {/* Bottom Shine Effect */}
+                    <div
+                      className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t 
+            from-white/20 to-transparent opacity-0 group-hover:opacity-100 
+            transition-opacity duration-300"
+                    ></div>
+                  </div>
+
+                  {/* Bottom Glow Effect */}
+                  <div
+                    className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-8 h-2 
+          bg-white/50 rounded-full blur-md opacity-0 group-hover:opacity-60 
+          transition-opacity duration-300"
+                  ></div>
+                </div>
+              </SwiperSlide>
             ))}
           </Swiper>
         </div>
@@ -521,12 +525,13 @@ const HomePage = () => {
 
       {/* Top Matches */}
     {/* Top Matches */}
-    <div className="mb-2">
-  <div className="flex items-center mb-2 sm:mb-6">
+    <div className="mb-4">
+  <div className="flex items-center mb-4 sm:mb-6">
     <div className="relative">
       <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
         Top Matches
       </h2>
+      <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
     </div>
     <div className="ml-4 sm:ml-6 h-px bg-gradient-to-r from-cyan-400 via-purple-400 to-transparent flex-1 max-w-60"></div>
   </div>{" "}
@@ -746,14 +751,15 @@ const HomePage = () => {
 
 
   {/* New Launch Games */}
-  <div className="mb-2">
-          <div className="flex items-center mb-2 sm:mb-6">
+  <div className="mb-4">
+          <div className="flex items-center mb-4 sm:mb-6">
       <div className="relative">
         <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
          New Launch
 
         </h2>
-        </div>
+        <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+      </div>
       <div className="ml-4 sm:ml-6 h-px bg-gradient-to-r from-cyan-400 via-purple-400 to-transparent flex-1 max-w-60"></div>
     </div>    
   <div className="grid">
