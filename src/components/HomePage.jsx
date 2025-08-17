@@ -376,7 +376,7 @@ const HomePage = () => {
               640: { slidesPerView: 4, spaceBetween: 4 },
               768: { slidesPerView: 5, spaceBetween: 16 },
               1024: { slidesPerView: 6, spaceBetween: 18 },
-              1280: { slidesPerView: 8, spaceBetween: 20 },
+              1280: { slidesPerView: 6, spaceBetween: 20 },
             }}
             modules={[FreeMode, Autoplay, Mousewheel]}
             className="sportsSwiper"
@@ -452,7 +452,7 @@ const HomePage = () => {
                 <div className="group relative">
                   {/* Card Container */}
                   <div
-                    className="w-full sm:min-w-[8rem] aspect-[6/2] rounded-2xl overflow-hidden 
+                    className="w-full sm:min-w-[8rem] aspect-[5/2] rounded-2xl overflow-hidden 
           cursor-pointer transform transition-all duration-300 ease-out
         
           shadow-lg border border-white/20 relative"
