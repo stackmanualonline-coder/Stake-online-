@@ -72,7 +72,7 @@ const TrendingGamesSection = () => {
 
 const TrendingHeader = () => {
   return (
-    <div className="flex items-center mb-3 sm:mb-8">
+    <div className="flex items-center mb-4 sm:mb-8">
       <div className="relative">
         <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-orange-300 via-yellow-400 to-orange-300 bg-clip-text text-transparent">
           Trending Games

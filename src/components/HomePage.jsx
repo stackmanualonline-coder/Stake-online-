@@ -525,8 +525,8 @@ const HomePage = () => {
 
       {/* Top Matches */}
     {/* Top Matches */}
-    <div className="mb-1">
-  <div className="flex items-center mb-2 sm:mb-6">
+    <div className="mb-4">
+  <div className="flex items-center mb-4 sm:mb-6">
     <div className="relative">
       <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
         Top Matches
@@ -751,8 +751,8 @@ const HomePage = () => {
 
 
   {/* New Launch Games */}
-  <div className="mb-2">
-          <div className="flex items-center mb-3 sm:mb-6">
+  <div className="mb-4">
+          <div className="flex items-center mb-4 sm:mb-6">
       <div className="relative">
         <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
          New Launch
