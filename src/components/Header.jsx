@@ -14,9 +14,15 @@ import {
   TrendingUp
 } from 'lucide-react';
 import Logo from '../assets/Logo/Logo.png'
+import { Link } from 'react-router-dom';
 
 const Header = ({ setSidebarOpen }) => {
   const [searchOpen, setSearchOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  React.useEffect(() => {
+    setIsAuthenticated(!!localStorage.getItem('authToken'));
+  }, []);
 
   return (
     <>
@@ -99,14 +105,27 @@ const Header = ({ setSidebarOpen }) => {
         <ChevronDown size={14} />
       </button>
 
-      {/* Auth Buttons */}
+      {/* Auth Buttons or User Icon */}
       <div className="flex items-center space-x-1.5">
-        <button className="bg-gradient-to-r from-orange-500 to-yellow-600 px-3 py-2 rounded-lg text-sm font-medium hover:from-orange-600 hover:to-yellow-700 transition-all shadow-lg">
-          Login
-        </button>
-        <button className="bg-gradient-to-r from-yellow-500 to-orange-600 px-3 py-2 rounded-lg text-sm font-medium hover:from-yellow-600 hover:to-orange-700 transition-all shadow-lg">
-          Join
-        </button>
+        {isAuthenticated ? (
+          <button className="bg-gradient-to-r from-orange-500 to-yellow-600 px-3 py-2 rounded-lg text-sm font-medium shadow-lg flex items-center" title="Account">
+            <User size={20} className="mr-2" />
+            <span className="hidden sm:inline">Account</span>
+          </button>
+        ) : (
+          <>
+            <Link to={"/login"}>
+              <button className="bg-gradient-to-r from-orange-500 to-yellow-600 px-3 py-2 rounded-lg text-sm font-medium hover:from-orange-600 hover:to-yellow-700 transition-all shadow-lg">
+                Login
+              </button>
+            </Link>
+            <Link to={"/signup"}>
+              <button className="bg-gradient-to-r from-yellow-500 to-orange-600 px-3 py-2 rounded-lg text-sm font-medium hover:from-yellow-600 hover:to-orange-700 transition-all shadow-lg">
+                Join
+              </button>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   </div>
