@@ -31,7 +31,7 @@ const Header = ({ setSidebarOpen }) => {
   <div className="flex items-center justify-between px-2 py-2">
     
     {/* Left Section - Mobile Menu + Logo */}
-    <div className="flex items-center space-x-3">
+    <div className="flex items-center">
       {/* Sidebar toggle on mobile/tablet */}
       <button 
         onClick={() => setSidebarOpen(true)}
@@ -79,7 +79,7 @@ const Header = ({ setSidebarOpen }) => {
         onClick={() => setSearchOpen(!searchOpen)}
         className="lg:hidden text-white/80 hover:text-orange-400 p-2 rounded-lg hover:bg-orange-500/20 transition-all"
       >
-        <Search size={18} />
+        {/* <Search size={18} /> */}
       </button>
 
       {/* Search Bar - Desktop */}
