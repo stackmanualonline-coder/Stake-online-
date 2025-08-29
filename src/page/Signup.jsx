@@ -36,28 +36,42 @@ const RegisterPage = () => {
         password: formData.password
       });
 
-      // Handle successful registration
-      console.log('Registration successful:', data);
+      // Handle successful registration - CHECK RESPONSE SUCCESS PROPERLY
+      console.log('Registration response:', data);
       
-      // Store user data if the API returns it
-      if (data.token) {
-        localStorage.setItem('authToken', data.token);
-      }
-      if (data.user) {
-        localStorage.setItem('userData', JSON.stringify(data.user));
-      }
+      // Only proceed if backend response is successful
+      if (data && data.success === true) {
+        // Store the complete response in localStorage with key 'user'
+        localStorage.setItem('user', JSON.stringify(data));
 
-      // Show success SweetAlert
-      await Swal.fire({
-        title: 'Success!',
-        text: 'Account created successfully! Welcome to Stake Manual Online.',
-        icon: 'success',
-        confirmButtonColor: '#f97316',
-        confirmButtonText: 'Continue to Dashboard'
-      });
+        // Also store token separately if it exists (for backward compatibility)
+        if (data.token) {
+          localStorage.setItem('authToken', data.token);
+        }
 
-      // Redirect to home page
-      navigate('/');
+        // Show success SweetAlert with personalized message
+        await Swal.fire({
+          title: 'Welcome to Stake Manual Online!',
+          html: `
+            <div class="text-left">
+              <p><strong>Account created successfully!</strong></p>
+              <p><strong>Your User ID:</strong> ${data.user?.userId || 'N/A'}</p>
+              <p><strong>Username:</strong> ${data.user?.username || 'N/A'}</p>
+              <p><strong>Starting Wallet:</strong> $${(data.user?.wallet || 0).toFixed(2)}</p>
+            </div>
+          `,
+          icon: 'success',
+          confirmButtonColor: '#f97316',
+          confirmButtonText: 'Continue to Dashboard'
+        });
+
+        // Redirect to home page
+        navigate('/');
+
+      } else {
+        // Backend returned error response
+        throw new Error(data.message || 'Registration failed. Please try again.');
+      }
 
     } catch (error) {
       // Handle registration error with SweetAlert

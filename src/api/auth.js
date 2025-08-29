@@ -21,3 +21,24 @@ export async function login(credentials) {
     });
     return response.json();
 }
+export async function adminLogin(credentials) {
+    const response = await fetch(base_lonk+`/admin-Login`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(credentials)
+    });
+    return response.json();
+}
+
+
+export async function getAllUsers() {
+    const response = await fetch(base_lonk + `/all-user`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    return response.json();
+}

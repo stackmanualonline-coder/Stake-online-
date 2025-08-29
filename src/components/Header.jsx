@@ -11,18 +11,48 @@ import {
   Home,
   Zap,
   Gamepad2,
-  TrendingUp
+  TrendingUp,
+  Wallet,
+  LogOut
 } from 'lucide-react';
 import Logo from '../assets/Logo/Logo.png'
 import { Link } from 'react-router-dom';
 
 const Header = ({ setSidebarOpen }) => {
+
   const [searchOpen, setSearchOpen] = useState(false);
+  const [showUserMenu, setShowUserMenu] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userData, setUserData] = useState(null);
 
   React.useEffect(() => {
-    setIsAuthenticated(!!localStorage.getItem('authToken'));
+    const token = localStorage.getItem('authToken');
+    const userRaw = localStorage.getItem('user');
+    if (token) {
+      setIsAuthenticated(true);
+      if (userRaw) {
+        try {
+          const userObj = JSON.parse(userRaw);
+          setUserData(userObj.user || null);
+        } catch {
+          setUserData(null);
+        }
+      } else {
+        setUserData(null);
+      }
+    } else {
+      setIsAuthenticated(false);
+      setUserData(null);
+    }
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('authToken');
+    setUserData(null);
+    setIsAuthenticated(false);
+    setShowUserMenu(false);
+  };
 
   return (
     <>
@@ -105,13 +135,94 @@ const Header = ({ setSidebarOpen }) => {
         <ChevronDown size={14} />
       </button>
 
-      {/* Auth Buttons or User Icon */}
+      {/* Auth Buttons or User Info */}
       <div className="flex items-center space-x-1.5">
-        {isAuthenticated ? (
-          <button className="bg-gradient-to-r from-orange-500 to-yellow-600 px-3 py-2 rounded-lg text-sm font-medium shadow-lg flex items-center" title="Account">
-            <User size={20} className="mr-2" />
-            <span className="hidden sm:inline">Account</span>
-          </button>
+        {isAuthenticated && userData ? (
+          <div className="relative">
+            {/* User Info Display */}
+            <button 
+              onClick={() => setShowUserMenu(!showUserMenu)}
+              className="bg-gradient-to-r from-slate-700 to-slate-800 border border-orange-500/30 px-3 py-2 rounded-lg text-sm font-medium hover:from-slate-600 hover:to-slate-700 transition-all shadow-lg flex items-center space-x-3"
+            >
+              {/* User Avatar */}
+              <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-yellow-600 rounded-full flex items-center justify-center text-white font-semibold text-xs">
+                {userData.username?.charAt(0).toUpperCase()}
+              </div>
+              
+              {/* User Details - Desktop */}
+              <div className="hidden sm:flex flex-col items-start">
+                <div className="flex items-center space-x-2">
+                  <span className="text-orange-400 font-mono text-xs">{userData.userId}</span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <Wallet size={12} className="text-green-400" />
+                  <span className="text-green-400 font-semibold text-xs">
+                    ${(userData.wallet || 0).toFixed(2)}
+                  </span>
+                </div>
+              </div>
+
+              {/* Mobile - Show only wallet */}
+              <div className="sm:hidden flex items-center space-x-1">
+                <Wallet size={14} className="text-green-400" />
+                <span className="text-green-400 font-semibold text-sm">
+                  ${(userData.wallet || 0).toFixed(2)}
+                </span>
+              </div>
+
+              <ChevronDown size={14} className="text-gray-400" />
+            </button>
+
+            {/* Dropdown Menu */}
+            {showUserMenu && (
+              <div className="absolute right-0 mt-2 w-64 bg-slate-800 border border-orange-500/30 rounded-xl shadow-xl z-50">
+                <div className="p-4 border-b border-slate-700">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-yellow-600 rounded-full flex items-center justify-center text-white font-semibold">
+                      {userData.username?.charAt(0).toUpperCase()}
+                    </div>
+                    <div>
+                      <p className="text-white font-medium">{userData.username}</p>
+                      <p className="text-orange-400 font-mono text-sm">{userData.userId}</p>
+                      <p className="text-gray-400 text-xs">{userData.email}</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="p-3">
+                  <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-lg p-3 mb-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-300 text-sm">Wallet Balance</span>
+                      <div className="flex items-center space-x-1">
+                        <Wallet size={16} className="text-green-400" />
+                        <span className="text-green-400 font-bold">
+                          ${(userData.wallet || 0).toFixed(2)}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-1">
+                    <button className="w-full text-left px-3 py-2 text-gray-300 hover:text-orange-400 hover:bg-orange-500/20 rounded-lg transition-all text-sm flex items-center space-x-2">
+                      <User size={16} />
+                      <span>Profile</span>
+                    </button>
+                    <button className="w-full text-left px-3 py-2 text-gray-300 hover:text-orange-400 hover:bg-orange-500/20 rounded-lg transition-all text-sm flex items-center space-x-2">
+                      <Wallet size={16} />
+                      <span>Deposit</span>
+                    </button>
+                    <button 
+                      onClick={handleLogout}
+                      className="w-full text-left px-3 py-2 text-red-400 hover:text-red-300 hover:bg-red-500/20 rounded-lg transition-all text-sm flex items-center space-x-2"
+                    >
+                      <LogOut size={16} />
+                      <span>Logout</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         ) : (
           <>
             <Link to={"/login"}>
@@ -119,7 +230,7 @@ const Header = ({ setSidebarOpen }) => {
                 Login
               </button>
             </Link>
-            <Link to={"/signup"}>
+            <Link to={"/register"}>
               <button className="bg-gradient-to-r from-yellow-500 to-orange-600 px-3 py-2 rounded-lg text-sm font-medium hover:from-yellow-600 hover:to-orange-700 transition-all shadow-lg">
                 Join
               </button>
@@ -150,8 +261,15 @@ const Header = ({ setSidebarOpen }) => {
       </div>
     </div>
   )}
-</header>
 
+  {/* Click outside to close dropdown */}
+  {showUserMenu && (
+    <div 
+      className="fixed inset-0 z-40" 
+      onClick={() => setShowUserMenu(false)}
+    />
+  )}
+</header>
     </>
   );
 };

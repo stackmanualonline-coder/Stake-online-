@@ -42,7 +42,7 @@ const LoginPage = () => {
         localStorage.setItem('authToken', data.token);
       }
       if (data.user) {
-        localStorage.setItem('userData', JSON.stringify(data.user));
+        localStorage.setItem('user', JSON.stringify(data));
       }
 
       // Show success message with SweetAlert
