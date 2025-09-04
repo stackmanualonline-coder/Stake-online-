@@ -1,4 +1,4 @@
-const base_lonk = ' http://10.107.85.184:4000/api/auth'
+const base_lonk = ' https://api.stakemanualonlinehub.com/api/auth'
 
 export async function register(userData) {
     const response = await fetch(base_lonk+`/register`, {

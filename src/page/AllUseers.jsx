@@ -1,20 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { getAllUsers } from '../api/auth';
+import { useNavigate } from 'react-router-dom';
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
   const [totalUsers, setTotalUsers] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);  // Track current page
+  const [usersPerPage] = useState(10);  // Set users per page to 10
+
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [currentPage]);  // Fetch users whenever the page changes
+
+  const handleLogout = () => {
+    localStorage.removeItem('role');
+    localStorage.removeItem('adminToken');
+    navigate("/admin/login")
+    
+  };
 
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const response = await getAllUsers();
+      const response = await getAllUsers({ page: currentPage, limit: usersPerPage });
       if (response.success) {
         setUsers(response.users);
         setTotalUsers(response.totalUsers);
@@ -44,6 +57,15 @@ const AllUsers = () => {
         return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
       default:
         return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
+    }
+  };
+
+  // Pagination logic
+  const pageCount = Math.ceil(totalUsers / usersPerPage);  // Calculate total number of pages
+
+  const changePage = (page) => {
+    if (page >= 1 && page <= pageCount) {
+      setCurrentPage(page);
     }
   };
 
@@ -80,7 +102,39 @@ const AllUsers = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6">
-      <div className="max-w-7xl mx-auto">
+      <button
+            onClick={handleLogout}
+            className="px-4 py-2 mx-2 text-red-500 border border-gray-600 rounded-lg hover:bg-gray-600 disabled:opacity-50"
+          >
+            Logout
+          </button>
+      <div className="max-w-7xl mx-auto ">
+
+
+         <div className="mb-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+            <div className="text-gray-400 text-sm">Total Users</div>
+            <div className="text-white text-2xl font-bold">{totalUsers}</div>
+          </div>
+          <div className="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+            <div className="text-gray-400 text-sm">Verified Users</div>
+            <div className="text-green-400 text-2xl font-bold">
+              {users.filter(user => user.isVerified).length}
+            </div>
+          </div>
+          <div className="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+            <div className="text-gray-400 text-sm">Admin Users</div>
+            <div className="text-red-400 text-2xl font-bold">
+              {users.filter(user => user.role === 'admin').length}
+            </div>
+          </div>
+          <div className="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+            <div className="text-gray-400 text-sm">Total Wallet Balance</div>
+            <div className="text-orange-400 text-2xl font-bold">
+              ${users.reduce((sum, user) => sum + (user.wallet || 0), 0).toFixed(2)}
+            </div>
+          </div>
+        </div>
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between">
@@ -106,9 +160,7 @@ const AllUsers = () => {
                   <th className="text-left py-4 px-6 text-gray-300 font-semibold">Email</th>
                   <th className="text-left py-4 px-6 text-gray-300 font-semibold">Wallet</th>
                   <th className="text-left py-4 px-6 text-gray-300 font-semibold">Role</th>
-                  {/* <th className="text-left py-4 px-6 text-gray-300 font-semibold">Status</th> */}
                   <th className="text-left py-4 px-6 text-gray-300 font-semibold">Joined</th>
-                  {/* <th className="text-left py-4 px-6 text-gray-300 font-semibold">Actions</th> */}
                 </tr>
               </thead>
               <tbody>
@@ -160,43 +212,10 @@ const AllUsers = () => {
                       </span>
                     </td>
 
-                    {/* Status */}
-                    {/* <td className="py-4 px-6">
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium border ${
-                        user.isVerified
-                          ? 'bg-green-500/20 text-green-400 border-green-500/30'
-                          : 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30'
-                      }`}>
-                        {user.isVerified ? 'Verified' : 'Pending'}
-                      </span>
-                    </td> */}
-
                     {/* Joined Date */}
                     <td className="py-4 px-6">
                       <p className="text-gray-300 text-sm">{formatDate(user.createdAt)}</p>
                     </td>
-
-                    {/* Actions */}
-                    {/* <td className="py-4 px-6">
-                      <div className="flex items-center space-x-2">
-                        <button className="bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 p-2 rounded-lg transition-colors">
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                          </svg>
-                        </button>
-                        <button className="bg-green-500/20 hover:bg-green-500/30 text-green-400 p-2 rounded-lg transition-colors">
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                          </svg>
-                        </button>
-                        <button className="bg-red-500/20 hover:bg-red-500/30 text-red-400 p-2 rounded-lg transition-colors">
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                          </svg>
-                        </button>
-                      </div>
-                    </td> */}
                   </tr>
                 ))}
               </tbody>
@@ -212,30 +231,25 @@ const AllUsers = () => {
           )}
         </div>
 
-        {/* Footer Stats */}
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
-            <div className="text-gray-400 text-sm">Total Users</div>
-            <div className="text-white text-2xl font-bold">{totalUsers}</div>
-          </div>
-          <div className="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
-            <div className="text-gray-400 text-sm">Verified Users</div>
-            <div className="text-green-400 text-2xl font-bold">
-              {users.filter(user => user.isVerified).length}
-            </div>
-          </div>
-          <div className="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
-            <div className="text-gray-400 text-sm">Admin Users</div>
-            <div className="text-red-400 text-2xl font-bold">
-              {users.filter(user => user.role === 'admin').length}
-            </div>
-          </div>
-          <div className="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
-            <div className="text-gray-400 text-sm">Total Wallet Balance</div>
-            <div className="text-orange-400 text-2xl font-bold">
-              ${users.reduce((sum, user) => sum + (user.wallet || 0), 0).toFixed(2)}
-            </div>
-          </div>
+        {/* Pagination Controls */}
+        <div className="mt-6 flex justify-center">
+          <button
+            onClick={() => changePage(currentPage - 1)}
+            className="px-4 py-2 mx-2 text-gray-500 border border-gray-600 rounded-lg hover:bg-gray-600 disabled:opacity-50"
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <span className="px-4 py-2 mx-2 text-gray-300">
+            Page {currentPage} of {pageCount}
+          </span>
+          <button
+            onClick={() => changePage(currentPage + 1)}
+            className="px-4 py-2 mx-2 text-gray-500 border border-gray-600 rounded-lg hover:bg-gray-600 disabled:opacity-50"
+            disabled={currentPage === pageCount}
+          >
+            Next
+          </button>
         </div>
       </div>
     </div>

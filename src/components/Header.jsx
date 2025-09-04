@@ -84,7 +84,7 @@ const Header = ({ setSidebarOpen }) => {
 
     {/* Center Navigation - Desktop Only */}
     <nav className="hidden lg:flex items-center space-x-1">
-      <a href="#" className="flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-yellow-600 px-4 py-2 rounded-lg font-medium hover:from-orange-600 hover:to-yellow-700 transition-all text-sm shadow-lg">
+      <a href="/" className="flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-yellow-600 px-4 py-2 rounded-lg font-medium hover:from-orange-600 hover:to-yellow-700 transition-all text-sm shadow-lg">
         <Home size={16} />
         <span>Home</span>
       </a>
