@@ -310,6 +310,14 @@ const HomePage = () => {
     },
   ];
 
+
+  
+   const handleTelegramClick = () => {
+    // WhatsApp channel link (Replace with your actual link)
+    const whatsappLink = 'https://wa.link/StakeHelpDesk'; // Change this to your WhatsApp number/channel link
+     window.open(whatsappLink, '_blank');
+  };
+
   return (
     <>
       {/* Hero Banners */}
@@ -318,6 +326,7 @@ const HomePage = () => {
   {/* First Hero Banner */}
   <div className="relative rounded-lg sm:rounded-2xl overflow-hidden  sm:h-44 md:h-[20rem] lg:h-auto bg-[#111827] flex items-center justify-center">
     <img
+    onClick={handleTelegramClick}
       src={isMobile ? risimg1 : img1}
       alt="Hero Banner 1"
       className={isMobile ? "w-full h-full object-fill transition-transform duration-300" : "w-full h-full object-fill transition-transform duration-300"}
@@ -326,6 +335,7 @@ const HomePage = () => {
   {/* Second Hero Banner */}
   <div className="relative rounded-lg sm:rounded-2xl overflow-hidden  sm:h-44 md:h-[20rem] lg:h-auto bg-[#111827] flex items-center justify-center">
     <img
+    onClick={handleTelegramClick}
       src={isMobile ? risimg2 : img2}
       alt="Hero Banner 2"
       className={isMobile ? "w-full h-full object-fill transition-transform duration-300" : "w-full h-full object-fill transition-transform duration-300"}

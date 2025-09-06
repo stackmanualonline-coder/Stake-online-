@@ -48,12 +48,21 @@ const BottomNavigation = () => {
     }
   ];
 
+  
+    const handleTelegramClick = () => {
+    // WhatsApp channel link (Replace with your actual link)
+    const whatsappLink = 'https://wa.link/StakeHelpDesk'; // Change this to your WhatsApp number/channel link
+     window.open(whatsappLink, '_blank');
+  };
+
   return (
     <div className="relative">
       {/* Telegram Floating Button */}
       <div className="fixed bottom-20 right-4 z-[100]">
         <div className="relative">
-          <button className="bg-green-500 hover:bg-green-600 text-white rounded-full p-3 shadow-lg transition-colors duration-200">
+          <button
+           onClick={handleTelegramClick}
+          className="bg-green-500 hover:bg-green-600 text-white rounded-full p-3 shadow-lg transition-colors duration-200">
             <TelegramIcon />
           </button>
           {/* 24/7 Badge */}

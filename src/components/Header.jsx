@@ -54,6 +54,13 @@ const Header = ({ setSidebarOpen }) => {
     setShowUserMenu(false);
   };
 
+   const handleTelegramClick = () => {
+    // WhatsApp channel link (Replace with your actual link)
+    const whatsappLink = 'https://wa.link/StakeHelpDesk'; // Change this to your WhatsApp number/channel link
+     window.open(whatsappLink, '_blank');
+  };
+
+
   return (
     <>
     <header className="bg-gradient-to-r from-slate-900 via-gray-900 to-black border-b border-orange-500/30 sticky top-0 z-50 backdrop-blur-sm">
@@ -123,7 +130,9 @@ const Header = ({ setSidebarOpen }) => {
       </div>
 
       {/* Support - Desktop only */}
-      <div className="hidden lg:flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-yellow-600 px-3 py-2 rounded-lg hover:from-orange-600 hover:to-yellow-700 transition-all cursor-pointer">
+      <div 
+      onClick={handleTelegramClick}
+      className="hidden lg:flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-yellow-600 px-3 py-2 rounded-lg hover:from-orange-600 hover:to-yellow-700 transition-all cursor-pointer">
         <MessageCircle size={16} />
         <span className="text-sm font-medium">Support</span>
       </div>
